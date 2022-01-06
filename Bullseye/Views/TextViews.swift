@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+struct LabelText: View{
+  var text: String
+  
+  var body: some View{
+    Text(text.uppercased())
+      .font(.caption)
+      .foregroundColor(Color("TextColor"))
+      .kerning(1.5)
+      .bold()
+  }
+  
+}
 
 struct InstructionText: View {
   var text: String
@@ -39,8 +51,9 @@ struct SliderText: View{
   
   var body: some View{
     Text(text)
-      .foregroundColor(Color("TextColor"))
       .bold()
+      .foregroundColor(Color("TextColor"))
+      .frame(width: 35.0)
   }
 }
 
@@ -51,6 +64,8 @@ struct TextViews_Previews: PreviewProvider {
       InstructionText(text: "intstructions")
       BigNumberText(text: "999")
       SliderText(text: "99")
+      LabelText(text:"score")
+      LabelText(text:"Round")
     }
   }
 }

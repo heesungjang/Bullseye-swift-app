@@ -22,48 +22,50 @@ struct BackgroundView: View {
         .edgesIgnoringSafeArea(.all)
     )
   }
-}
-
-struct NumberView: View{
-  var title: String
-  var text: String
   
-  var body: some View {
-    Color.gray
-      .frame(width: 56.0, height: 56.0)
-  }
-}
-
-
-struct TopView: View {
-  @Binding var game: Game
   
-  var body: some View {
-    HStack{
-      RoundedImageViewStrocked(systemName: "arrow.counterclockwise")
-      Spacer()
-      RoundedImageViewFilled(systemName: "list.dash")
+  struct NumberView: View{
+    var title: String
+    var text: String
+    
+    var body: some View {
+      VStack(spacing: 5){
+        LabelText(text: title.uppercased())
+        RoundRectTextView(value: text)
+      }
     }
   }
-}
-
-
-struct BottomView: View {
-  @Binding var game: Game
-  
-  var body: some View {
-    HStack{
-      NumberView(title: "Score", text: String(game.score))
-      Spacer()
-      NumberView(title: "Round", text: String(game.score))
+    
+    
+    struct TopView: View {
+      @Binding var game: Game
+      
+      var body: some View {
+        HStack{
+          RoundedImageViewStrocked(systemName: "arrow.counterclockwise")
+          Spacer()
+          RoundedImageViewFilled(systemName: "list.dash")
+        }
+      }
+    }
+    
+    struct BottomView: View {
+      @Binding var game: Game
+      
+      var body: some View {
+        HStack{
+          NumberView(title: "Score", text: String(game.score))
+          Spacer()
+          NumberView(title: "Round", text: String(game.round))
+        }
+      }
+    }
+    
+    
+    
+    struct BackgroundView_Previews: PreviewProvider {
+      static var previews: some View {
+        BackgroundView(game: .constant(Game()))
+      }
     }
   }
-}
-
-
-
-struct BackgroundView_Previews: PreviewProvider {
-  static var previews: some View {
-    BackgroundView(game: .constant(Game()))
-  }
-}

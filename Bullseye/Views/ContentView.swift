@@ -56,6 +56,7 @@ struct InstructionView: View{
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
+.previewInterfaceOrientation(.portrait)
     ContentView()
       .preferredColorScheme(.dark)
   }
