@@ -28,6 +28,11 @@ struct HitMeButton: View {
     })
     .foregroundColor(Color.white)
     .cornerRadius(21.0)
+    .overlay(
+      RoundedRectangle(cornerRadius: 21.0)
+        .strokeBorder(Color.white, lineWidth: 2.0)
+    )
+    
     .alert(isPresented: $alertsIsVisible, content:{
       
       let roundedValue = Int(sliderValue.rounded())

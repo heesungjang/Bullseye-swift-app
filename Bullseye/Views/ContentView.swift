@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-  
   @State private var alertsIsVisible = false
   @State private var sliderValue = 50.0
   @State private var game = Game()
@@ -25,6 +24,7 @@ struct ContentView: View {
     }
   }
 }
+
 
 struct SliderView: View{
   @Binding var sliderValue: Double
@@ -61,3 +61,4 @@ struct ContentView_Previews: PreviewProvider {
       .preferredColorScheme(.dark)
   }
 }
+
