@@ -35,37 +35,42 @@ struct BackgroundView: View {
       }
     }
   }
+  
+  
+  struct TopView: View {
+    @Binding var game: Game
     
-    
-    struct TopView: View {
-      @Binding var game: Game
-      
-      var body: some View {
-        HStack{
+    var body: some View {
+      HStack{
+        Button(action: {
+          game.restart()
+        }) {
           RoundedImageViewStrocked(systemName: "arrow.counterclockwise")
-          Spacer()
-          RoundedImageViewFilled(systemName: "list.dash")
         }
-      }
-    }
-    
-    struct BottomView: View {
-      @Binding var game: Game
-      
-      var body: some View {
-        HStack{
-          NumberView(title: "Score", text: String(game.score))
-          Spacer()
-          NumberView(title: "Round", text: String(game.round))
-        }
-      }
-    }
-    
-    
-    
-    struct BackgroundView_Previews: PreviewProvider {
-      static var previews: some View {
-        BackgroundView(game: .constant(Game()))
+        
+        Spacer()
+        RoundedImageViewFilled(systemName: "list.dash")
       }
     }
   }
+  
+  struct BottomView: View {
+    @Binding var game: Game
+    
+    var body: some View {
+      HStack{
+        NumberView(title: "Score", text: String(game.score))
+        Spacer()
+        NumberView(title: "Round", text: String(game.round))
+      }
+    }
+  }
+  
+  
+  
+  struct BackgroundView_Previews: PreviewProvider {
+    static var previews: some View {
+      BackgroundView(game: .constant(Game()))
+    }
+  }
+}
